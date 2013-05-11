@@ -1,6 +1,6 @@
 nrt-sc140 Cookbook
 ==================
-Opscode Chef cookbook for nrt-sc140.
+[Opscode Chef](http://www.opscode.com/chef/) cookbook for [nrt-sc140](https://github.com/kn1kn1/nrt-sc140).
 
 Requirements
 ------------
@@ -8,7 +8,7 @@ Requirements
 - Ubuntu
 
 #### cookbooks
-- apt
+- [apt](http://community.opscode.com/cookbooks/apt)
 
 
 Usage
