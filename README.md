@@ -9,17 +9,18 @@ Requirements
 
 #### cookbooks
 - [apt](http://community.opscode.com/cookbooks/apt)
-
+- [supercollider](https://github.com/kn1kn1/chef-supercollider) 
 
 Usage
 -----
 #### nrt-sc140::default
-Just include `nrt-sc140` in your node's `run_list`:
+Include `nrt-sc140` and `supercollider` in your node's `run_list`:
 
 ```json
 {
   "name":"my_node",
   "run_list": [
+    "recipe[supercollider]"
     "recipe[nrt-sc140]"
   ]
 }

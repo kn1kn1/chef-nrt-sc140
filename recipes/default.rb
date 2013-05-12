@@ -19,8 +19,9 @@ package "nodejs" do
 end
 
 # nrt-sc140
-username = "vagrant"
+username = "supercollider"
 home = "/home/#{username}"
+
 execute "npm" do
   cwd home
   command "npm install nrt-sc140"
@@ -42,4 +43,20 @@ ruby_block "config.json" do
     file.write_file
   end
   only_if "grep -q '\"sclang_path\": \"/usr/local/bin/\"' #{config}"
+end
+
+# WORKAROUND - change nrt-sc140 directory's owner from "vagrant" to "supercollider".
+nrtsc140 = "#{home}/node_modules/nrt-sc140"
+[nrtsc140, "#{nrtsc140}/public/"].each do |dir|
+  directory dir do
+    owner username
+    group username
+    mode 0755
+  end
+end
+
+# WORKAROUND - execute "npm install" at "#{home}/node_modules/nrt-sc140" to repair dependencies.
+execute "npm" do
+  cwd nrtsc140
+  command "npm install"
 end
